@@ -9,6 +9,6 @@ import (
 
 func main() {
 	fmt.Println("Starting server on port 8080...")
-	router := http.InitHandlers()
+	router := httpHandlers.InitHandlers()
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
