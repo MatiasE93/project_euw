@@ -8,6 +8,7 @@ import (
 )
 
 var view *template.Template
+var port
 
 type pageData struct {
 	Title string
@@ -16,10 +17,10 @@ type pageData struct {
 
 func init() {
 	view = template.Must(template.ParseGlob("templates/*.gohtml"))
+	port := os.Getenv("PORT")
 }
 
 func main() {
-	port := os.Getenv("PORT")
 	http.HandleFunc("/", indexPage)
 	log.Print("Listening on port " + port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
