@@ -1,14 +1,19 @@
 package main
 
 import (
-	"fmt"
+	"io"
 	"log"
 	"net/http"
-	"github.com/MatiasE93/project_euw/pkg/httpHandlers"
+	"os"
 )
 
+func hello(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "Hello World!")
+}
+
 func main() {
-	fmt.Println("Starting server on port 8080...")
-	router := httpHandlers.InitHandlers()
-	log.Fatal(http.ListenAndServe(":8080", router))
+	port := os.Getenv("PORT")
+	http.HandleFunc("/", hello)
+	log.Print("Listening on port " + port)
+	log.Fatal(http.ListenAndServe(":"+port), nil)
 }
