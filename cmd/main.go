@@ -17,13 +17,13 @@ type pageData struct {
 
 func init() {
 	view = template.Must(template.ParseGlob("templates/*.gohtml"))
-	port := os.Getenv("PORT")
+	port = os.Getenv("PORT")
 }
 
 func main() {
 	http.HandleFunc("/", indexPage)
 	log.Print("Listening on port " + port)
-	http.ListenAndServe(":"+port, nil)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
