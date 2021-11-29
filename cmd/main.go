@@ -8,7 +8,7 @@ import (
 )
 
 var view *template.Template
-var port
+var port int
 
 type pageData struct {
 	Title string
