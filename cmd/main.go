@@ -26,7 +26,9 @@ func main() {
 }
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
-	pd := pageData {Title:"Pagina Indice"}
+	pd := pageData {
+		Title: "Pagina Indice",
+	}
 
 	err := view.ExecuteTemplate(w, "index.gohtml", pd)
 	if err != nil {
