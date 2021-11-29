@@ -23,7 +23,7 @@ func init() {
 func main() {
 	http.HandleFunc("/", indexPage)
 	log.Print("Listening on port " + port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	http.ListenAndServe(":"+port, nil)
 }
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
