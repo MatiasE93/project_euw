@@ -15,7 +15,7 @@ type pageData struct {
 }
 
 func init() {
-	view = template.Must(template.ParseGlob("template/*.gohtml"))
+	view = template.Must(template.ParseGlob("templates/*.gohtml"))
 }
 
 func main() {
