@@ -5,7 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"os"
-	"cryptoIndexPkg"
+	"cryptoIndexPkg/cryptoIndex"
 )
 
 var view *template.Template
