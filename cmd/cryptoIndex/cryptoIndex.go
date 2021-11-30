@@ -1,12 +1,12 @@
 package cryptoIndex
 
 import (
-	"net/http"
 	"io/ioutil"
 	"log"
+	"net/http"
 )
 
-func getGalaPrice() {
+func GetGalaPrice() {
 	resp, err := http.Get("https://api.coinbase.com/v2/prices/BTC-USD/spot")
 	if err != nil {
 		log.Fatal(err)

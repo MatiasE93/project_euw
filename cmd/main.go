@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/MatiasE93/project_euw/cmd/cryptoIndex"
 )
 
 var view *template.Template
@@ -30,7 +32,7 @@ func indexPage(w http.ResponseWriter, r *http.Request) {
 	pd := pageData{
 		Title: "Pagina Indice",
 	}
-	cryptoIndex.getGalaPrice()
+	cryptoIndex.GetGalaPrice()
 
 	err := view.ExecuteTemplate(w, "index.gohtml", pd)
 	if err != nil {
