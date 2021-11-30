@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/MatiasE93/project_euw/cmd/cryptoIndexPkg"
 	"log"
 	"html/template"
 	"net/http"
 	"os"
-	"github.com/MatiasE93/project_euw/cmd/cryptoIndexPkg/cryptoIndex"
 )
 
 var view *template.Template
