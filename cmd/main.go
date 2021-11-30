@@ -1,9 +1,8 @@
 package main
 
 import (
-	"github.com/MatiasE93/project_euw/cmd/cryptoIndexPkg"
-	"log"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 )
@@ -12,7 +11,7 @@ var view *template.Template
 var port string
 
 type pageData struct {
-	Title string
+	Title     string
 	Firstname string
 }
 
@@ -28,7 +27,7 @@ func main() {
 }
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
-	pd := pageData {
+	pd := pageData{
 		Title: "Pagina Indice",
 	}
 	cryptoIndex.getGalaPrice()
