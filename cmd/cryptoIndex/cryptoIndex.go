@@ -31,6 +31,7 @@ func GetGalaPriceInDollars(target CryptoJson) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Println("Body: " + string(body))
 
 	bodyJsonified, err := json.Marshal(string(body))
 	if err != nil {
@@ -38,6 +39,7 @@ func GetGalaPriceInDollars(target CryptoJson) {
 	}
 
 	json.Unmarshal(bodyJsonified, target)
+	log.Println("Body Jsonificado: " + string(bodyJsonified))
 
 	base := target.Data.Base
 	if base != "" {
