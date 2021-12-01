@@ -19,7 +19,7 @@ type CryptoJsonData struct {
 
 var client = &http.Client{Timeout: 10 * time.Second}
 
-func GetGalaPriceInDollars(target CryptoJson) {
+func GetGalaPriceInDollars(target CryptoJson) CryptoJson {
 	resp, err := client.Get("https://api.coinbase.com/v2/prices/GALA-USD/spot")
 	if err != nil {
 		log.Fatal(err)
@@ -27,4 +27,5 @@ func GetGalaPriceInDollars(target CryptoJson) {
 	defer resp.Body.Close()
 
 	json.NewDecoder(resp.Body).Decode(&target)
+	return target
 }

@@ -34,7 +34,7 @@ func indexPage(w http.ResponseWriter, r *http.Request) {
 	pd := pageData{
 		Title: "Pagina Indice",
 	}
-	cryptoIndex.GetGalaPriceInDollars(galaPrice)
+	galaPrice = cryptoIndex.GetGalaPriceInDollars(galaPrice)
 
 	log.Println("Crypto: " + galaPrice.Data.Base)
 	log.Println("Precio en " + galaPrice.Data.Currency + ": " + galaPrice.Data.Amount)
