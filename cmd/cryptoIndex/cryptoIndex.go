@@ -1,22 +1,32 @@
 package cryptoIndex
 
 import (
-	"io/ioutil"
+	"encoding/json"
 	"log"
 	"net/http"
+	"time"
 )
 
-func GetGalaPrice() {
-	resp, err := http.Get("https://api.coinbase.com/v2/prices/BTC-USD/spot")
+type CryptoJsonData struct {
+	Base     string
+	Currency string
+	Amount   string
+}
+
+type CryptoJson struct {
+	Data CryptoJsonData
+}
+
+var client = &http.Client{Timeout: 10 * time.Second}
+
+func GetGalaPriceInDollars(target CryptoJson) string {
+	resp, err := client.Get("https://api.coinbase.com/v2/prices/GALA-USD/spot")
 	if err != nil {
 		log.Fatal(err)
+		return ""
 	}
+	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	sb := string(body)
-	log.Print(sb)
+	json.NewDecoder(resp.Body).Decode(target)
+	return target.Data.Amount
 }
