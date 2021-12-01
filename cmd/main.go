@@ -13,8 +13,7 @@ var view *template.Template
 var port string
 
 type pageData struct {
-	Title     string
-	Firstname string
+	Title string
 }
 
 func init() {
