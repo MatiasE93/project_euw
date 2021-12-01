@@ -38,7 +38,7 @@ func GetGalaPriceInDollars(target CryptoJson) {
 		log.Fatal(err)
 	}
 
-	json.Unmarshal(bodyJsonified, target)
+	json.Unmarshal(bodyJsonified, &target)
 	log.Println("Body Jsonificado: " + string(bodyJsonified))
 
 	base := target.Data.Base
@@ -46,19 +46,5 @@ func GetGalaPriceInDollars(target CryptoJson) {
 		log.Println(base)
 	} else {
 		log.Println("Base esta vacio")
-	}
-
-	currency := target.Data.Currency
-	if currency != "" {
-		log.Println(currency)
-	} else {
-		log.Println("Currency esta vacio")
-	}
-
-	amount := target.Data.Amount
-	if amount != "" {
-		log.Println(amount)
-	} else {
-		log.Println("Amount esta vacio")
 	}
 }

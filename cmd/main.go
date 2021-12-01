@@ -29,7 +29,7 @@ func main() {
 }
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
-	galaPrice := *new(cryptoIndex.CryptoJson)
+	var galaPrice cryptoIndex.CryptoJson
 
 	pd := pageData{
 		Title: "Pagina Indice",
