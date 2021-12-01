@@ -13,7 +13,9 @@ var view *template.Template
 var port string
 
 type pageData struct {
-	Title string
+	Crypto string
+	Valor  string
+	Moneda string
 }
 
 func init() {
@@ -29,14 +31,13 @@ func main() {
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
 	var galaPrice cryptoIndex.CryptoJson
-
-	pd := pageData{
-		Title: "Pagina Indice",
-	}
 	galaPrice = cryptoIndex.GetGalaPriceInDollars(galaPrice)
 
-	log.Println("Crypto: " + galaPrice.Data.Base)
-	log.Println("Precio en " + galaPrice.Data.Currency + ": " + galaPrice.Data.Amount)
+	pd := pageData{
+		Crypto: galaPrice.Data.Base,
+		Valor:  galaPrice.Data.Amount,
+		Moneda: galaPrice.Data.Currency,
+	}
 
 	err := view.ExecuteTemplate(w, "index.gohtml", pd)
 	if err != nil {
