@@ -36,6 +36,9 @@ func indexPage(w http.ResponseWriter, r *http.Request) {
 	}
 	cryptoIndex.GetGalaPriceInDollars(galaPrice)
 
+	log.Println("Crypto: " + galaPrice.Data.Base)
+	log.Println("Precio en " + galaPrice.Data.Currency + ": " + galaPrice.Data.Amount)
+
 	err := view.ExecuteTemplate(w, "index.gohtml", pd)
 	if err != nil {
 		log.Println(err)

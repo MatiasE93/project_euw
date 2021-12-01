@@ -26,25 +26,5 @@ func GetGalaPriceInDollars(target CryptoJson) {
 	}
 	defer resp.Body.Close()
 
-	/*body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println("Body: " + string(body))*/
 	json.NewDecoder(resp.Body).Decode(&target)
-
-	/*bodyJsonified, err := json.Marshal(string(body))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	json.Unmarshal(bodyJsonified, &target)
-	log.Println("Body Jsonificado: " + string(bodyJsonified))*/
-
-	base := target.Data.Base
-	if base != "" {
-		log.Println(base)
-	} else {
-		log.Println("Base esta vacio")
-	}
 }
