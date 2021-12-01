@@ -29,13 +29,12 @@ func main() {
 }
 
 func indexPage(w http.ResponseWriter, r *http.Request) {
-	galaPrice := *new(cryptoIndex.CryptoJsonData)
+	galaPrice := *new(cryptoIndex.CryptoJson)
 
 	pd := pageData{
 		Title: "Pagina Indice",
 	}
-	price := cryptoIndex.GetGalaPriceInDollars(galaPrice)
-	log.Println(price)
+	cryptoIndex.GetGalaPriceInDollars(galaPrice)
 
 	err := view.ExecuteTemplate(w, "index.gohtml", pd)
 	if err != nil {
