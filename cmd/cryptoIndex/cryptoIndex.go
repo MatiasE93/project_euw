@@ -2,7 +2,6 @@ package cryptoIndex
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
@@ -27,19 +26,20 @@ func GetGalaPriceInDollars(target CryptoJson) {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	/*body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Body: " + string(body))
+	log.Println("Body: " + string(body))*/
+	json.NewDecoder(resp.Body).Decode(&target)
 
-	bodyJsonified, err := json.Marshal(string(body))
+	/*bodyJsonified, err := json.Marshal(string(body))
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	json.Unmarshal(bodyJsonified, &target)
-	log.Println("Body Jsonificado: " + string(bodyJsonified))
+	log.Println("Body Jsonificado: " + string(bodyJsonified))*/
 
 	base := target.Data.Base
 	if base != "" {
