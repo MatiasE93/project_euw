@@ -19,7 +19,7 @@ func GetGalaPriceInDollars(target CryptoJsonData) string {
 	resp, err := client.Get("https://api.coinbase.com/v2/prices/GALA-USD/spot")
 	if err != nil {
 		log.Fatal(err)
-		return ""
+		return "Error while retreving price"
 	}
 	defer resp.Body.Close()
 
